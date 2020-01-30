@@ -8,4 +8,6 @@ RMB_data_augmentation.py使用数据增强的方法来训练人民币分类网络，使得在第四套人民
 
 transforms_methods_2.py是一个展示数据增强方法的demo，可以取消某些注释来观察transforms方法的结果
 
-猫狗数据集和人民币数据集：https://pan.baidu.com/s/1-0xHuViQz7lir6o1KxgJxg 密码:6837
+猫狗数据集和人民币数据集：
+猫狗链接：https://pan.baidu.com/s/1-0xHuViQz7lir6o1KxgJxg 密码：6837；
+RMB链接：https://pan.baidu.com/s/1tzqsnawtFOOdAhsQ_1SEEw 提取码：gu8g 
