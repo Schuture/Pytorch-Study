@@ -63,7 +63,7 @@ valid_loader = DataLoader(dataset=valid_data, batch_size=BATCH_SIZE)
 
 # ============================ step 2/5 模型 ============================
 
-net = LeNet(classes=2)
+net = LeNet(classes=2) # 返回batch_size * classes维度的张量
 net.initialize_weights()
 
 # ============================ step 3/5 损失函数 ============================

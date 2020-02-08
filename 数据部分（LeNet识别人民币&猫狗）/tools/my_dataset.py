@@ -34,13 +34,11 @@ class RMBDataset(Dataset):
     def get_img_info(data_dir): # 自己定义的用来读取数据的函数
         data_info = list()
         for root, dirs, _ in os.walk(data_dir):
-            # 遍历类别
-            for sub_dir in dirs:
+            for sub_dir in dirs: # 遍历类别目录
                 img_names = os.listdir(os.path.join(root, sub_dir))
                 img_names = list(filter(lambda x: x.endswith('.jpg'), img_names))
 
-                # 遍历图片
-                for i in range(len(img_names)):
+                for i in range(len(img_names)): # 遍历图片
                     img_name = img_names[i]
                     path_img = os.path.join(root, sub_dir, img_name)
                     label = rmb_label[sub_dir]
