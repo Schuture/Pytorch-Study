@@ -1,0 +1,1 @@
+loss_function_1/2.py两个文件演示了pytorch中损失函数的通用参数reduction, weight的使用，并演示了18种损失函数的效果。
