@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 torch.manual_seed(1)
 
 
-def exp_w_func(beta, time_list):
+def exp_w_func(beta, time_list): # 指数权重函数
     return [(1 - beta) * np.power(beta, exp) for exp in time_list]
 
 
@@ -19,9 +19,9 @@ time_list = np.arange(num_point).tolist()
 
 # ------------------------------ exponential weight ------------------------------
 flag = 0
-# flag = 1
+#flag = 1
 if flag:
-    weights = exp_w_func(beta, time_list)
+    weights = exp_w_func(beta, time_list) # 展示随着时间增加，权重指数下降
 
     plt.plot(time_list, weights, '-ro', label="Beta: {}\ny = B^t * (1-B)".format(beta))
     plt.xlabel("time")
@@ -35,9 +35,9 @@ if flag:
 
 # ------------------------------ multi weights ------------------------------
 flag = 0
-# flag = 1
+#flag = 1
 if flag:
-    beta_list = [0.98, 0.95, 0.9, 0.8]
+    beta_list = [0.98, 0.95, 0.9, 0.8] # beta值越小，记忆越短
     w_list = [exp_w_func(beta, time_list) for beta in beta_list]
     for i, w in enumerate(w_list):
         plt.plot(time_list, w, label="Beta: {}".format(beta_list[i]))
@@ -48,14 +48,14 @@ if flag:
 
 
 # ------------------------------ SGD momentum ------------------------------
-# flag = 0
+#flag = 0
 flag = 1
 if flag:
     def func(x):
         return torch.pow(2*x, 2)    # y = (2x)^2 = 4*x^2        dy/dx = 8x
 
     iteration = 100
-    m = 0.9     # .9 .63
+    m = 0.63     # momentum的值，对优化结果影响很大，可选 .9 .63
 
     lr_list = [0.01, 0.03]
 
