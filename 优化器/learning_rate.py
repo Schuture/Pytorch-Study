@@ -21,7 +21,7 @@ x = torch.tensor([2.], requires_grad=True)
 
 # ------------------------------ plot data ------------------------------
 flag = 0
-# flag = 1
+#flag = 1
 if flag:
 
     x_t = torch.linspace(-3, 3, 100)
@@ -36,12 +36,12 @@ if flag:
 
 # ------------------------------ gradient descent ------------------------------
 flag = 0
-# flag = 1
+#flag = 1
 if flag:
     iter_rec, loss_rec, x_rec = list(), list(), list()
 
-    lr = 0.01    # /1. /.5 /.2 /.1 /.125
-    max_iteration = 20   # /1. 4     /.5 4   /.2 20 200
+    lr = 0.125    # 学习率可以更改为 /1. /.5 /.2 /.1 /.125
+    max_iteration = 20   # 迭代步数可以改为 20 / 200
 
     for i in range(max_iteration):
 
@@ -59,6 +59,7 @@ if flag:
         iter_rec.append(i)
         loss_rec.append(y)
 
+    plt.figure(figsize = (16, 16))
     plt.subplot(121).plot(iter_rec, loss_rec, '-ro')
     plt.xlabel("Iteration")
     plt.ylabel("Loss value")
@@ -74,12 +75,12 @@ if flag:
 
 # ------------------------------ multi learning rate ------------------------------
 
-# flag = 0
+#flag = 0
 flag = 1
 if flag:
     iteration = 100
     num_lr = 10
-    lr_min, lr_max = 0.01, 0.2  # .5 .3 .2
+    lr_min, lr_max = 0.01, 0.2  # lr_max 可以更改为 .5 .3 .2
 
     lr_list = np.linspace(lr_min, lr_max, num=num_lr).tolist()
     loss_rec = [[] for l in range(len(lr_list))]
@@ -96,6 +97,7 @@ if flag:
 
             loss_rec[i].append(y.item())
 
+    plt.figure(figsize = (16,16))
     for i, loss_r in enumerate(loss_rec):
         plt.plot(range(len(loss_r)), loss_r, label="LR: {}".format(lr_list[i]))
     plt.legend()
