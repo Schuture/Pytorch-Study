@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-# @file name  : common_tools.py
-# @author     : tingsongyu
-# @date       : 2019-09-16 10:08:00
-# @brief      : 通用函数
-"""
-
 import numpy as np
 import torch
 import torchvision.transforms as transforms
