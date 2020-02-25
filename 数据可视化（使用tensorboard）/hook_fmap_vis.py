@@ -1,5 +1,5 @@
 """
-采用hook函数可视化特征图
+采用hook函数可视化特征图，比先提取再可视化要高效
 """
 import torch.nn as nn
 import numpy as np
@@ -40,24 +40,24 @@ if flag:
 
     # 注册hook
     fmap_dict = dict()
-    for name, sub_module in alexnet.named_modules():
+    for name, sub_module in alexnet.named_modules(): # 返回alexnet所有子网络层
 
         if isinstance(sub_module, nn.Conv2d):
-            key_name = str(sub_module.weight.shape)
+            key_name = str(sub_module.weight.shape) # 用网络层形状命名
             fmap_dict.setdefault(key_name, list())
 
             n1, n2 = name.split(".")
 
-            def hook_func(m, i, o):
+            def hook_func(m, i, o): # 对某一层m，记录它的特征图o
                 key_name = str(m.weight.shape)
                 fmap_dict[key_name].append(o)
 
-            alexnet._modules[n1]._modules[n2].register_forward_hook(hook_func)
+            alexnet._modules[n1]._modules[n2].register_forward_hook(hook_func) # 对某卷积层注册
 
     # forward
     output = alexnet(img_tensor)
 
-    # add image
+    # add image，用于tensorboard显示
     for layer_name, fmap_list in fmap_dict.items():
         fmap = fmap_list[0]
         fmap.transpose_(0, 1)
