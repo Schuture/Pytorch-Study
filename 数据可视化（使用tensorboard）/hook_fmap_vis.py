@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 import torchvision.transforms as transforms
 import torchvision.utils as vutils
-from torch.utils.tensorboard import SummaryWriter
+from tensorboardX import SummaryWriter
 from tools.common_tools import set_seed
 import torchvision.models as models
 

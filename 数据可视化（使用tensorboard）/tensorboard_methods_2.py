@@ -6,11 +6,10 @@ add_graph显示网络计算图
 import os
 import torch
 import time
-import torchvision.models as models
 import torchvision.transforms as transforms
 import torchvision.utils as vutils
 from tools.my_dataset import RMBDataset
-from torch.utils.tensorboard import SummaryWriter
+from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
 from tools.common_tools import set_seed
 from model.lenet import LeNet
@@ -21,7 +20,7 @@ set_seed(1)  # 设置随机种子
 
 # ----------------------------------- 3 image -----------------------------------
 flag = 0
-# flag = 1
+#flag = 1
 if flag:
 
     writer = SummaryWriter(comment='test_your_comment', filename_suffix="_test_your_filename_suffix")
@@ -53,12 +52,12 @@ if flag:
 
 
 # ----------------------------------- 4 make_grid -----------------------------------
-flag = 0
-# flag = 1
+#flag = 0
+flag = 1
 if flag:
     writer = SummaryWriter(comment='test_your_comment', filename_suffix="_test_your_filename_suffix")
 
-    split_dir = os.path.join("data", "RMB_split")
+    split_dir = os.path.join('../数据部分（LeNet识别人民币&猫狗）', "data", "RMB_split")
     train_dir = os.path.join(split_dir, "train")
     # train_dir = "path to your training data"
 
@@ -78,8 +77,8 @@ if flag:
 
 # ----------------------------------- 5 add_graph -----------------------------------
 
-# flag = 0
-flag = 1
+flag = 0
+#flag = 1
 if flag:
 
     writer = SummaryWriter(comment='test_your_comment', filename_suffix="_test_your_filename_suffix")
