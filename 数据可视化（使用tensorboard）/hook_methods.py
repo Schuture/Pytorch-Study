@@ -49,8 +49,8 @@ if flag:
     a_grad = list()
 
     def grad_hook(grad):
-        grad *= 2
-        return grad*3 # 不带return则返回10，带了就会覆盖掉10，返回30=5*6
+        grad *= 2 # 10 = 5*2
+        return grad*3 # 不带return则返回10，否则会覆盖掉10，返回30=5*2*3
 
     handle = w.register_hook(grad_hook)
 
@@ -69,8 +69,8 @@ if flag:
     class Net(nn.Module):
         def __init__(self):
             super(Net, self).__init__()
-            self.conv1 = nn.Conv2d(1, 2, 3)
-            self.pool1 = nn.MaxPool2d(2, 2)
+            self.conv1 = nn.Conv2d(1, 2, 3) # in_channel = 1, out_channel = 2, kernel_size = 3
+            self.pool1 = nn.MaxPool2d(2, 2) # kernel_size = 2, stride = 2
 
         def forward(self, x):
             x = self.conv1(x)
@@ -94,10 +94,10 @@ if flag:
     net.conv1.weight[1].detach().fill_(2)
     net.conv1.bias.data.detach().zero_()
 
-    # 注册hook
+    # 注册hook，一共有前向、前向之前、反向传播三种hook
     fmap_block = list()
     input_block = list()
-    net.conv1.register_forward_hook(forward_hook) # 这个函数接受的是一个函数
+    net.conv1.register_forward_hook(forward_hook) # 这三个函数接受的都是一个函数
     net.conv1.register_forward_pre_hook(forward_pre_hook)
     net.conv1.register_backward_hook(backward_hook)
 
@@ -109,7 +109,7 @@ if flag:
     output = net(fake_img) 
 
     loss_fnc = nn.L1Loss()
-    target = torch.randn_like(output)
+    target = torch.randn_like(output) # 随机定义一个目标，用于计算loss
     loss = loss_fnc(target, output)
     loss.backward() # 反向传播时，会调用register_backward_hook 中注册的函数
 
