@@ -1,0 +1,1 @@
+resnet_inference.py 使用之前的蚂蚁蜜蜂数据集训练得到的checkpoint来进行推理（详见fine-tune部分）
