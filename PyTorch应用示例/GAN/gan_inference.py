@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-# @file name  : gan_inference.py
-# @author     : TingsongYu https://github.com/TingsongYu
-# @date       : 2019-12-05
-# @brief      : gan inference
+gan inference
 """
 import os
 import torch.utils.data

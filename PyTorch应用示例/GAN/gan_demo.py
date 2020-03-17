@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-# @file name  : gan_train.py
-# @author     : TingsongYu https://github.com/TingsongYu
-# @date       : 2019-12-05
-# @brief      : gan demo
+gan demo，训练一个GAN
 """
 import os
 import torch.nn as nn
