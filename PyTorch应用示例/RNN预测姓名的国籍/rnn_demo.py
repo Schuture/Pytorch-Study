@@ -90,7 +90,7 @@ def evaluate(line_tensor):
     return output
 
 
-def predict(input_line, n_predictions=3):
+def predict(input_line, n_predictions=3): # 使用训练好的RNN预测类别，打印n个概率最大的
     print('\n> %s' % input_line)
     with torch.no_grad():
         output = evaluate(lineToTensor(input_line))
@@ -161,7 +161,7 @@ def train(category_tensor, line_tensor):
 if __name__ == "__main__":
     # config
     path_txt = os.path.join("data", "names", "*.txt") # 使用通配符匹配文件名
-    all_letters = string.ascii_letters + " .,;'" # 所有的大小写以及三种标点
+    all_letters = string.ascii_letters + " .,;'" # 所有的大小写以及五种标点、空格
     n_letters = len(all_letters)    # 52 + 5 = 57 字符总类别数
     print_every = 5000
     plot_every = 5000
