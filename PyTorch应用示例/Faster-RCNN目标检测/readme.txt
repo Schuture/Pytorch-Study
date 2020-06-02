@@ -1,0 +1,3 @@
+detection_demo.py使用一个完整的预训练faster-rcnn来进行推理，演示了模型的输入输出，以及在图像样例上的效果。
+
+fasterrcnn_demo.py使用penn_fudan数据集来微调faster-rcnn的最后两层，演示了模型的训练过程，以及可视化结果。
